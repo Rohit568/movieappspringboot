@@ -1,0 +1,68 @@
+server:
+  port : 8321
+
+eureka:
+   instance:
+        prefer-ip-address: true
+   client:
+        fetch-registry: true
+        register-with-eureka: true
+        service-url:
+            defaultZone: http://localhost:8761/eureka
+spring:
+ application:
+   name: MOVIE-GATEWAY 
+ cloud:
+   discovery:
+     enabled: true
+   gateway:
+     globalcors:
+        corsConfigurations:
+          '[/**]':
+            allowedOrigins: "*"
+            allowedHeaders: "*"
+            allowedMethods:
+            - GET
+            - POST
+            - DELETE
+            - PUT
+     routes:
+       - id: auth-microservice
+         uri: lb://AUTH-SERVICE
+         predicates:
+           - Path=/auth/**
+           
+         
+
+       - id: user-microservice
+         uri: lb://USER-SERVICE
+         predicates:
+           - Path=/user/**
+         filters:
+           - AuthenticationFilter
+         
+           
+        
+       
+       
+       - id: movie-microservice
+         uri: lb://MOVIE-SERVICE
+         predicates:
+           - Path=/movie/**
+         filters:
+           - AuthenticationFilter
+       
+       
+       
+       - id: wishlist-microservice
+         uri: lb://WISHLIST-SERVICE
+         predicates:
+           - Path=/wishlist/**
+         filters:
+           - AuthenticationFilter
+
+
+     
+
+ 
+

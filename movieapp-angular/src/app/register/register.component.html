@@ -1,0 +1,66 @@
+<app-header2></app-header2>
+
+<div class="login-page">
+    <main>
+      <div class="login-block">
+      
+        <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+
+          <div class="form-group">
+            <div class="input-group">
+              <span class="input-group-addon"><i class="fa fa-user ti-user"></i></span>
+              <input type="text" class="form-control" placeholder="Your name"
+              formControlName="username" placeholder="Username"
+              [class.is-invalid]="registerForm.get('username')?.invalid && registerForm.get('username')?.touched">
+
+            </div>
+          </div>
+          
+          <hr class="hr-xs">
+          <div *ngIf="registerForm.get('username')?.invalid && registerForm.get('username')?.touched" class = "text-danger">
+            username must contain atleast 4 letters
+           </div>
+
+          <div class="form-group">
+            <div class="input-group">
+              <span class="input-group-addon"><i class="fa fa-envelope ti-email"></i></span>
+              <input type="text" class="form-control" placeholder="Your email address"
+              formControlName="email" placeholder="Email"
+              [class.is-invalid]="registerForm.get('email')?.invalid && registerForm.get('email')?.touched">
+
+            </div>
+          </div>
+          
+          <hr class="hr-xs">
+          <div *ngIf="registerForm.get('email')?.invalid && registerForm.get('email')?.touched" class = "text-danger">
+            enter a valid email.
+           </div>
+          <div class="form-group">
+            <div class="input-group">
+              <span class="input-group-addon"><i class="fa fa-lock ti-unlock"></i></span>
+              <input type="password" class="form-control" placeholder="password"
+              formControlName="password" placeholder="password"
+              [class.is-invalid]="registerForm.get('password')?.invalid && registerForm.get('password')?.touched">
+     
+            </div>
+          </div>
+          <hr class="hr-xs">
+        <div *ngIf="registerForm.get('password')?.invalid && registerForm.get('password')?.touched" class = "text-danger">
+          password must contain atleast 6 character
+         </div>
+
+          <button class="btn btn-primary btn-block" [disabled] = "!registerForm.valid" type="submit">Sign up</button>
+
+          <div class="login-footer">
+              <h5 *ngIf="iserror">{{error_msg}}</h5>
+          </div>
+
+        </form>
+      </div>
+      
+      <div class="login-links">
+        <p class="text-center">Already have an account? <a class="txt-brand" href="/login">Login</a></p>
+      </div>
+
+    </main>
+    </div>

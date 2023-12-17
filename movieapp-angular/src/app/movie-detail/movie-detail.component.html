@@ -1,0 +1,29 @@
+<app-header></app-header>
+
+<div style = "background-color:#e5e7ed;"class="movie_card" id="bright" style ="background-image: url(wishList.bigImageName);">
+  <div class="info_section">
+    <div class="movie_header">
+      <img class="locandina" src="{{wishList.imageName}}"/>
+      <h1>{{wishList.titleName}}</h1>
+      <h4>{{wishList.yearAdded}}, David Ayer</h4>
+      <span class="minutes">117 min</span>
+      <p class="type">Action, Crime, Fantasy</p>
+    </div>
+    <div class="movie_desc">
+      <p class="text">
+        {{wishList.description}}
+        </p>
+    </div>
+    <div class="movie_social">
+      <ul>
+        <li><i class="material-icons" (click) = "removefromfavourite(wishList.id)">Remove from favourite</i></li>
+        <li><i class="material-icons">Date Added : {{wishList.dateAdded}}</i></li>
+      </ul>
+    </div>
+  </div>
+  <div class="blur_back bright_back">
+    <img src = "{{wishList.bigImageName}}"  width="100%"/>
+  </div>
+</div>
+
+

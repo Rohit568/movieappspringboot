@@ -1,0 +1,54 @@
+<app-header2></app-header2>
+
+<div class="login-page">
+
+  <main>
+
+    <div class="login-block">
+      <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+
+        <div class="form-group">
+          <div class="input-group">
+            <span class="input-group-addon"><i class="fa fa-user ti-user"></i></span>
+            <input type="text" class="form-control" formControlName="username" placeholder="Username"
+              [class.is-invalid]="loginForm.get('username')?.invalid && loginForm.get('username')?.touched">
+             
+          </div>
+         
+        </div>
+        
+        <hr class="hr-xs">
+        <div *ngIf="loginForm.get('username')?.invalid && loginForm.get('username')?.touched" class = "text-danger">
+          username must contain atleast 4 letters
+         </div>
+
+        <div class="form-group">
+          <div class="input-group">
+            <span class="input-group-addon"><i class="fa fa-lock ti-unlock"></i></span>
+            <input type="password" class="form-control" formControlName="password" placeholder="password"
+              [class.is-invalid]="loginForm.get('password')?.invalid && loginForm.get('password')?.touched">
+          </div>
+        </div>
+
+        <hr class="hr-xs">
+        <div *ngIf="loginForm.get('password')?.invalid && loginForm.get('password')?.touched" class = "text-danger">
+          password must contain atleast 6 character
+         </div>
+
+        <button class="btn btn-primary btn-block" [disabled] = "!loginForm.valid" type="submit">Sign in</button>
+        <div class="login-footer">
+
+        </div>
+        
+        <div *ngIf = "error_flag" class = 'text-danger'>{{error_msg}}</div>
+      </form>
+
+      
+    </div>
+
+    <div class="login-links">
+      <p class="text-center">Don't have an account? <a class="txt-brand" href="/register">Register here</a></p>
+    </div>
+
+  </main>
+</div>

@@ -1,0 +1,47 @@
+<app-header></app-header>
+
+<div class="navbar bg-secondary justify-content-center align-items-center">
+
+  <button (click)="showall()" class="custom-button">
+    All
+  </button>
+  <button (click)="showfavourites()" class="custom-button">
+    Favourite
+  </button>
+
+</div>
+
+<div *ngIf="allFlag">
+  <section id="allContent" class="d-flex flex-wrap justify-content-around">
+    <!-- Display all content here -->
+    <!-- Repeat for Cards 1 to 18 -->
+    <div *ngFor="let movie of movies" class="card" style="width: 18rem;">
+      <img   [routerLink] = "['/movie2',movie.id]" src="{{movie.image}}" alt="Placeholder Image" class="card-img-top">
+      <div class="card-body">
+        <h5 class="card-title">{{movie.title}}</h5>
+        <p class="card-text">Rating : {{movie.rating}} Ranking : {{movie.rank}}</p>
+        <p class="card-text">Released Year : {{movie.year}}</p>
+      </div>
+    </div>
+  </section>
+</div>
+<div *ngIf="favouriteFlag">
+  <section id="allContent" class="d-flex flex-wrap justify-content-around">
+    <!-- Display all content here -->
+    <!-- Repeat for Cards 1 to 18 -->
+    <div *ngFor="let movie of wishList" class="card" style="width: 18rem;">
+      <img src="{{movie.image}}" alt="Placeholder Image" class="card-img-top">
+      <div [routerLink] = "['/movie',movie.id]" class="card-body">
+        <h5 class="card-title">{{movie.title}}</h5>
+        <p class = "card-text">Ranking : {{movie.ranking}} Rating : {{movie.rating}}</p>
+        <p class="card-text"><b>Released Year : </b>{{movie.year}}</p>
+      </div>
+    </div>
+
+    <div *ngIf ="flag_favourite" class = "p-6 card">
+         <h5 class = "card-title"> No favourites yet</h5>
+    </div>
+
+  </section>
+
+</div>

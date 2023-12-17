@@ -1,0 +1,28 @@
+<app-header></app-header>
+<div class="movie_card" id="bright">
+    <div class="info_section">
+      <div class="movie_header">
+        <img class="locandina" src="{{movie.image}}"/>
+        <h1>{{movie.title}}</h1>
+        <h4>{{movie.year}}, David Ayer</h4>
+        <span class="minutes">117 min</span>
+        <p class="type">Action, Crime, Fantasy</p>
+      </div>
+      <div class="movie_desc">
+        <p class="text">
+          {{movie.description}}
+          </p>
+      </div>
+      <div class="movie_social">
+        <ul>
+          <li><i class="material-icons" (click) = "addtofavourite(movie.id)">Add to favourite</i></li>
+        </ul>
+      </div>
+    </div>
+    <div class="blur_back bright_back">
+      <img src = "{{movie.big_image}}"  width="100%"/>
+    </div>
+  </div>
+  
+  
+  <p>movie2 works!</p>
